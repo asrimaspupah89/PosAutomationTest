@@ -19,7 +19,7 @@ public class LogoutSteps {
 	@Given("browser is open")
 	public void browser_is_open()
 	{
-		System.setProperty("webdriver.chrome.driver","D:\\COLLEGE\\VI\\PPL\\W11\\CucumberJava\\src\\test\\resources\\drivers\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","D:\\Politeknik Negeri Bandung\\Semester 6\\SW Test\\PosAutomationTest\\src\\test\\resources\\drivers\\chromedriver.exe");
 	    ChromeOptions options = new ChromeOptions();
 	    options.addArguments("--remote-allow-origins=*");
 	    

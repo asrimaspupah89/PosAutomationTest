@@ -1,4 +1,4 @@
-package Login;
+package StepDefinition;
 
 import java.time.Duration;
 
@@ -19,13 +19,8 @@ public class LoginSteps {
 	@Given("browser is open")
 	public void browser_is_open()
 	{
-		System.setProperty("webdriver.chrome.driver","D:\\Politeknik Negeri Bandung\\Semester 6\\SW Test\\PosAutomationTest\\src\\test\\resources\\drivers\\chromedriver.exe");
-	    ChromeOptions options = new ChromeOptions();
-	    options.addArguments("--remote-allow-origins=*");
-	    
-	    driver = new ChromeDriver(options);
-	    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));	  		
-	    driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+		driver = Driver.getInstance();
+
 	}
 	
 	@And("user is on login page")
@@ -33,12 +28,29 @@ public class LoginSteps {
 	{    
 		driver.navigate().to("https://app.bleven.web.id/login");
 	}
-	
-	@When("^user enters ([^\"]*) and ([^\"]*)$")
-	public void user_enters_email_and_password(String email, String password) 
+
+	@When("user enters {string} and {string}")
+	public void user_enters_and(String string, String string2) 
 	{
-		driver.findElement(By.id("email")).sendKeys(email);
-		driver.findElement(By.id("password")).sendKeys(password);	
+		driver.findElement(By.id("email")).sendKeys(string);
+		driver.findElement(By.id("password")).sendKeys(string2);	
+		
+	}
+	
+	@When("user enters fiora@gmail.com and fiora")
+	public void user_enters_fiora_gmail_com_and_fiora() 
+	{
+		driver.findElement(By.id("email")).sendKeys("fiora@gmail.com");
+		driver.findElement(By.id("password")).sendKeys("fiora");	
+			
+	}
+
+	@When("user enters cholid@gmail.com and tes")
+	public void user_enters_cholid_gmail_com_and() 
+	 
+	{
+		driver.findElement(By.id("email")).sendKeys("cholid@gmail.com");
+		driver.findElement(By.id("password")).sendKeys("tes");	
 			
 	}
 
@@ -51,10 +63,10 @@ public class LoginSteps {
 	@Then("user is navigated to the home page")
 	public void user_is_navigated_to_the_home_page() throws InterruptedException
 	{
-		Thread.sleep(3500);
-		driver.close();
-		driver.quit();
+		Thread.sleep(5000);
+		System.out.println("Sudah ada di home page");
 	}
-		
+	
+	
 }
 
