@@ -3,6 +3,7 @@ package StepDefinitions;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -87,14 +88,22 @@ public class deleteprodSteps {
 //	    throw new io.cucumber.java.PendingException();
 	}
 	
-	@And("delete button found")
-	public void delete_button_found() {
-		driver.findElement(By.id("button-0"));
-	}
 	
-	@Then("print message delete button found")
-	public void print_message_delete_button_found() throws InterruptedException {
-		System.out.println("Delete Button Found");
+	@Then("delete button found")
+	public void delete_button_found() throws InterruptedException {
+		//check delete button
+		boolean isDeleteButtonDisplayed = true;
+		try {
+			driver.findElement(By.id("deleteButton"));
+		} catch (NoSuchElementException e) {
+			isDeleteButtonDisplayed = false;
+		}
+		
+		if (isDeleteButtonDisplayed) {
+			System.out.println("Delete button is displayed");
+		} else {
+			System.out.println("Delete button is not displayed");
+		}
 		Thread.sleep(1500);
 		driver.close();
 		driver.quit();

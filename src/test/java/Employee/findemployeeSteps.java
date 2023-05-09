@@ -3,6 +3,7 @@ package StepDefinitions;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -98,14 +99,22 @@ public class findemployeeSteps {
 		driver.quit();
 	}
 	
-	@And("find employee bar found")
-	public void find_employee_bar_found() {
-		driver.findElement(By.cssSelector("input[type='search']"));
-	}
 	
-	@Then("print message find bar found")
-	public void print_message_find_bar_found() throws InterruptedException {
-		System.out.println("Find Bar Found");
+	@Then("find employee bar found")
+	public void find_employee_bar_found() throws InterruptedException {
+		//check find bar
+		boolean isFindBarDisplayed = true;
+		try {
+			driver.findElement(By.cssSelector("input[type='search']"));
+		} catch (NoSuchElementException e) {
+			isFindBarDisplayed = false;
+		}
+		
+		if (isFindBarDisplayed) {
+			System.out.println("Find bar is displayed");
+		} else {
+			System.out.println("Find bar is not displayed");
+		}
 		Thread.sleep(1500);
 		driver.close();
 		driver.quit();

@@ -65,8 +65,7 @@ Feature: feature to test find employee funcionality
    Scenario: check find employee bar
    	Given browser is open and login succesfully for find employee
    	When employee page is open for find employee
-   	And find employee bar found
-   	Then print message find bar found
+   	Then find employee bar found
     
 
 

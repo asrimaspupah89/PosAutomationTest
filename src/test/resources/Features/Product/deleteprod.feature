@@ -25,6 +25,5 @@ Feature: feature to test delete product button funcionality
    Scenario: check delete product button
    	Given browser is open and login succesfully for delete product
    	When product page is open for delete product
-   	And delete button found
-   	Then print message delete button found
+   	Then delete button found
    	
