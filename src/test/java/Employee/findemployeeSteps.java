@@ -97,4 +97,17 @@ public class findemployeeSteps {
 		driver.close();
 		driver.quit();
 	}
+	
+	@And("find employee bar found")
+	public void find_employee_bar_found() {
+		driver.findElement(By.cssSelector("input[type='search']"));
+	}
+	
+	@Then("print message find bar found")
+	public void print_message_find_bar_found() throws InterruptedException {
+		System.out.println("Find Bar Found");
+		Thread.sleep(1500);
+		driver.close();
+		driver.quit();
+	}
 }

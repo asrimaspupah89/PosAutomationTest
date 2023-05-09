@@ -87,4 +87,17 @@ public class deleteprodSteps {
 //	    throw new io.cucumber.java.PendingException();
 	}
 	
+	@And("delete button found")
+	public void delete_button_found() {
+		driver.findElement(By.id("button-0"));
+	}
+	
+	@Then("print message delete button found")
+	public void print_message_delete_button_found() throws InterruptedException {
+		System.out.println("Delete Button Found");
+		Thread.sleep(1500);
+		driver.close();
+		driver.quit();
+	}
+	
 }
